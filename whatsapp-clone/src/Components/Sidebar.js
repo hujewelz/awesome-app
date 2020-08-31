@@ -7,9 +7,11 @@ import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import "./Sidebar.css";
 import SidebarChat from "./SidebarChat";
 import db from "../firebase";
+import { useStateValue } from "../StateProvider";
 
 function Sidebar() {
   const [rooms, setRooms] = useState([]);
+  const [{ user }] = useStateValue();
 
   useEffect(() => {
     db.ref("rooms").on("value", (snap) => {
@@ -24,7 +26,7 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar-header">
-        <Avatar />
+        <Avatar src={user?.photoURL} />
         <div className="sidebar-headerRight">
           <IconButton>
             <DonutLargeIcon />
