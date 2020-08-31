@@ -19,7 +19,7 @@ function App() {
             <Sidebar />
             <Switch>
               <Route path="/rooms/:roomId" component={Chat}></Route>
-              <Route path="/" component={Chat}></Route>
+              <Route path="/"></Route>
             </Switch>
           </Router>
         </div>

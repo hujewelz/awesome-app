@@ -12,11 +12,13 @@ import { useParams } from "react-router-dom";
 function Chat() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const [room, setRoom] = useState(undefined);
+  const [roomName, setRoomName] = useState("");
   const { roomId } = useParams();
 
   useEffect(() => {
-    db.ref("rooms/" + roomId).once("value", (snap) => setRoom(snap.val()));
+    db.ref("rooms/" + roomId).once("value", (snap) =>
+      setRoomName(snap.val().name)
+    );
 
     db.ref("messages/" + roomId).on("value", (snap) => {
       let msgs = [];
@@ -47,7 +49,7 @@ function Chat() {
       <div className="chat-header">
         <Avatar />
         <div className="chat-headerInfo">
-          <h3>{room === undefined ? "" : room.name}</h3>
+          <h3>{roomName}</h3>
           <p>last seen Tue. 18 Aug 2020 19:22:47 GTM</p>
         </div>
         <div className="chat-headerRight">
