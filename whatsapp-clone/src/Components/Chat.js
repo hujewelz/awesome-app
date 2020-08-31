@@ -6,14 +6,16 @@ import MoreVert from "@material-ui/icons/MoreVert";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import MicIcon from "@material-ui/icons/Mic";
 import "./Chat.css";
-import db from "../firebase";
+import db, { auth } from "../firebase";
 import { useParams } from "react-router-dom";
+import { useStateValue } from "../StateProvider";
 
 function Chat() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [roomName, setRoomName] = useState("");
   const { roomId } = useParams();
+  const [{ user }] = useStateValue();
 
   useEffect(() => {
     db.ref("rooms/" + roomId).once("value", (snap) =>
@@ -36,13 +38,15 @@ function Chat() {
     const message = {
       text: input,
       timestamp: Date.now(),
-      sender: { id: 1233434, name: "Jewelz Asone" },
+      sender: { id: user.uid, name: user.displayName },
     };
     const newMsgKey = db.ref("messages" + roomId).push().key;
     let updates = {};
     updates["/" + newMsgKey] = message;
     db.ref("messages/" + roomId).update(updates);
   };
+
+  const isMe = (msg) => auth.currentUser.uid === msg.data.sender.id;
 
   return (
     <div className="chat">
@@ -66,7 +70,10 @@ function Chat() {
       </div>
       <div className="chat-body">
         {messages.map((msg) => (
-          <p key={msg.id} className="chat-message chat-receiver">
+          <p
+            key={msg.id}
+            className={`chat-message ${isMe(msg) && "chat-receiver"} `}
+          >
             <span className="chat-name">{msg.data.sender.name}</span>
             {msg.data.text}
             <span className="chat-timestamp">{Date(msg.data.timestamp)}</span>
