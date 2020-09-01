@@ -14,6 +14,7 @@ function Chat() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [roomName, setRoomName] = useState("");
+  const [lastSeen, setLastSeen] = useState("");
   const { roomId } = useParams();
   const [{ user }] = useStateValue();
 
@@ -21,6 +22,8 @@ function Chat() {
     db.ref("rooms/" + roomId).once("value", (snap) =>
       setRoomName(snap.val().name)
     );
+
+    setLastSeen(Date());
 
     db.ref("messages/" + roomId).on("value", (snap) => {
       let msgs = [];
@@ -54,7 +57,7 @@ function Chat() {
         <Avatar />
         <div className="chat-headerInfo">
           <h3>{roomName}</h3>
-          <p>last seen Tue. 18 Aug 2020 19:22:47 GTM</p>
+          <p>last seen {lastSeen}</p>
         </div>
         <div className="chat-headerRight">
           <IconButton>
