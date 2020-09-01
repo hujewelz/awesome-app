@@ -76,7 +76,9 @@ function Chat() {
           >
             <span className="chat-name">{msg.data.sender.name}</span>
             {msg.data.text}
-            <span className="chat-timestamp">{Date(msg.data.timestamp)}</span>
+            <span className="chat-timestamp">
+              {new Date(msg.data.timestamp).toLocaleString()}
+            </span>
           </p>
         ))}
       </div>
