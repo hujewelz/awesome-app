@@ -1,3 +1,5 @@
+import { auth } from "./firebase";
+
 export const initialState = {
   user: JSON.parse(localStorage.getItem("user")),
 };
