@@ -1,0 +1,38 @@
+.post {
+  position: relative;
+  top: 54px;
+  display: flex;
+  /* height: 100vh; */
+  width: 100vw;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  justify-content: center;
+}
+
+.post-content {
+  /* position: relative; */
+  display: flex;
+  justify-content: space-between;
+  max-width: 935px;
+  width: 100%;
+}
+
+.post-container {
+  /* position: relative; */
+  flex-direction: column;
+  /* flex: 1; */
+  justify-content: start;
+  align-items: center;
+  max-width: 614px;
+  width: 100%;
+}
+
+.sidebar-right {
+  /* position: fixed; */
+  display: none;
+  height: 100vh;
+  max-width: 293px;
+  width: 100%;
+  margin-bottom: 30px;
+  background-color: purple;
+}
