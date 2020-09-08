@@ -1,0 +1,7 @@
+.ui-button {
+  border: none;
+  cursor: pointer;
+  outline-style: none;
+  background-color: transparent;
+  padding: 8px;
+}

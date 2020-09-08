@@ -1,0 +1,52 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  padding: 100px;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.login > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login input {
+  border: 2px solid black;
+  width: 220px;
+  margin: 8px 0;
+  padding: 0 16px;
+  border-radius: 10px;
+  outline-style: none;
+  height: 44px;
+}
+
+.login > form > button {
+  background-color: deeppink;
+  border: none;
+  border-radius: 10px;
+  height: 44px;
+  font-size: 16px;
+  color: white;
+  margin-top: 8px;
+}
+
+.login > p {
+  font-size: 14px;
+}
+
+.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  display: inline;
+  margin: 16px 0;
+  padding: 0;
+  color: deeppink;
+}
+
+.link-button:hover,
+.link-button:focus {
+  text-decoration: none;
+}

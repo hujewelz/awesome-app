@@ -6,7 +6,7 @@ function Modal({ open, onClose, children }) {
     <div>
       {open ? (
         <div className="modal" onClick={onClose}>
-          <h1>{children}</h1>
+          {children}
         </div>
       ) : (
         ""
