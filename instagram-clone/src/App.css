@@ -5,6 +5,6 @@
 .app {
   position: relative;
   background-color: #fafafa;
-  height: 100vh;
+  padding-bottom: 54px;
   width: 100vw;
 }
