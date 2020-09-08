@@ -5,6 +5,22 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Post from "./screen/Post";
 import Signup from "./screen/Signup";
 
+function App() {
+  return (
+    <Router>
+      <div className="app">
+        <Switch>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
 const Home = () => {
   return (
     <>
@@ -13,22 +29,4 @@ const Home = () => {
     </>
   );
 };
-
-function App() {
-  return (
-    <Router>
-      <div className="app">
-        <Switch>
-          <Route path="/">
-            <Home />
-          </Route>
-          <Route path="/signup">
-            <Signup />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
-}
-
 export default App;

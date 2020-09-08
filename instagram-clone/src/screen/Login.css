@@ -1,27 +1,37 @@
 .login {
   display: flex;
   flex-direction: column;
-  padding: 100px;
+  padding: 40px 100px;
   background-color: white;
   border-radius: 4px;
 }
 
-.login > form {
+.login-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  height: 29px;
+  margin-bottom: 20px;
+  align-self: start;
+}
+
+.login-form > form {
   display: flex;
   flex-direction: column;
 }
 
-.login input {
+.login-form input {
   border: 2px solid black;
-  width: 220px;
+  width: 240px;
   margin: 8px 0;
   padding: 0 16px;
   border-radius: 10px;
   outline-style: none;
   height: 44px;
+  font-size: 14px;
 }
 
-.login > form > button {
+.login-button {
   background-color: deeppink;
   border: none;
   border-radius: 10px;
@@ -31,7 +41,7 @@
   margin-top: 8px;
 }
 
-.login > p {
+.login-form > p {
   font-size: 14px;
 }
 
@@ -49,4 +59,33 @@
 .link-button:hover,
 .link-button:focus {
   text-decoration: none;
+}
+
+hr.divider {
+  overflow: visible;
+  padding: 0;
+  /* margin-bottom: 10px; */
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  color: #6e6d7a;
+  text-align: center;
+}
+
+hr.divider:after {
+  position: relative;
+  background-color: white;
+  top: 7px;
+  content: "Or";
+  display: inline-block;
+  font-size: 14px;
+  padding: 0 16px;
+}
+
+.login-with-google {
+  display: flex;
+}
+.login-with-google > button {
+  flex: 1;
+  margin-top: 28px;
+  background-color: #4285f4;
 }
