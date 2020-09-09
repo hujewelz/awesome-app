@@ -8,7 +8,7 @@ import Signup from "./screen/Signup";
 function App() {
   return (
     <Router>
-      <div className="app">
+      <div>
         <Switch>
           <Route path="/signup">
             <Signup />
@@ -23,10 +23,10 @@ function App() {
 }
 const Home = () => {
   return (
-    <>
+    <div className="app">
       <NavigationBar />
       <Post />
-    </>
+    </div>
   );
 };
 export default App;

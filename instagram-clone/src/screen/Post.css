@@ -18,15 +18,14 @@
 
 .sidebar-right {
   position: fixed;
-  top: 30px;
-  /* left: 642px; */
-  right: calc(100%-907px);
+  top: 84px;
+  right: calc((100vw - 935px) / 2);
   height: 500px;
   max-width: 293px;
   background-color: purple;
 }
 
-@media only screen and (max-width: 907px) {
+@media only screen and (max-width: 935px) {
   .sidebar-right {
     display: none;
   }
