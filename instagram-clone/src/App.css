@@ -2,6 +2,11 @@
   margin: 0px;
 }
 
+:root {
+  --text-black: rgb(38, 38, 38);
+  --text-gray: rgb(142, 142, 142);
+}
+
 .app {
   position: relative;
   background-color: #fafafa;

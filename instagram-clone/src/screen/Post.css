@@ -8,6 +8,17 @@
   margin: 0 auto;
 }
 
+.hot {
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 3px;
+  background-color: white;
+  margin-bottom: 24px;
+  margin-top: 0;
+  padding: 16px 0;
+  height: 84px;
+  width: 614px;
+}
+
 .post-container {
   display: flex;
   flex-direction: column;
@@ -21,8 +32,37 @@
   top: 84px;
   right: calc((100vw - 935px) / 2);
   height: 500px;
-  max-width: 293px;
-  background-color: purple;
+  width: 293px;
+  /* background-color: purple; */
+}
+
+.userinfo {
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.userinfo .MuiAvatar-root {
+  width: 56px;
+  height: 56px;
+  background-color: lightgray;
+  border: 1px solid rgb(198, 198, 198);
+}
+
+.username {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+}
+
+.username h3 {
+  font-size: 13px;
+  color: var(--text-black);
+}
+
+.username p {
+  font-size: 12px;
+  color: var(--text-gray);
 }
 
 @media only screen and (max-width: 935px) {
