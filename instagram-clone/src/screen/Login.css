@@ -1,61 +1,15 @@
-.login {
-  display: flex;
-  flex-direction: column;
-  padding: 40px 100px;
-  background-color: white;
-  border-radius: 4px;
-}
-
-.login-logo {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  height: 29px;
-  margin-bottom: 20px;
-  align-self: start;
-}
-
-.login-form > form {
-  display: flex;
-  flex-direction: column;
-}
-
-.login-form input {
-  border: 2px solid black;
-  width: 240px;
-  margin: 8px 0;
-  padding: 0 16px;
-  border-radius: 10px;
-  outline-style: none;
-  height: 44px;
-  font-size: 14px;
-}
-
-.login-button {
-  background-color: deeppink;
-  border: none;
-  border-radius: 10px;
-  height: 44px;
-  font-size: 16px;
-  color: white;
-  margin-top: 8px;
-}
-
-.login-form > p {
-  font-size: 14px;
-}
-
 .link-button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   display: inline;
   margin: 16px 0;
   padding: 0;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 15px;
   color: rgb(0, 138, 240);
+  outline-style: none;
 }
 
 .link-button:hover,
@@ -78,16 +32,27 @@ hr.divider:after {
   background-color: white;
   top: 7px;
   content: "Or";
+  font-weight: 800;
   display: inline-block;
   font-size: 14px;
   padding: 0 16px;
+  color: rgb(142, 142, 142);
 }
 
 .login-with-google {
   display: flex;
 }
-.login-with-google > button {
+
+.login-button {
   flex: 1;
-  margin-top: 28px;
-  background-color: #4285f4;
+  cursor: pointer;
+  margin-top: 24px;
+  color: rgb(38, 38, 38);
+  padding: 8px 0;
+  margin-top: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  background-color: transparent;
+  outline-style: none;
 }

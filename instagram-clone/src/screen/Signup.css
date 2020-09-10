@@ -51,6 +51,7 @@
 }
 
 .signup-button {
+  cursor: pointer;
   padding: 8px 0;
   margin: 10px 0;
   font-size: 14px;
@@ -59,6 +60,7 @@
   background-color: rgb(53, 149, 246);
   color: white;
   border-radius: 6px;
+  outline-style: none;
 }
 
 .signup-button[disabled] {
@@ -95,6 +97,11 @@
 .have-account span {
   font-size: 15px;
   color: rgb(38, 38, 38);
+}
+
+.have-account > a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .policy {
