@@ -12,7 +12,10 @@ function Signup() {
         />
         <h2>Sign up to see photos and videos from your friends.</h2>
         <div className="signup-with-google">
-          <button className="signup-button">Sign up with Google</button>
+          <button className="signup-button">
+            <span>G</span>
+            Sign up with Google
+          </button>
         </div>
         <hr className="divider" />
         <div>
