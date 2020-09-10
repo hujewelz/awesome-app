@@ -1,18 +1,106 @@
 .signup {
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #fafafa;
+  background-color: rgb(249, 249, 249);
 }
 
 .signup-container {
   display: flex;
   border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  padding: 40px 100px;
+  padding: 40px;
   flex-direction: column;
   background-color: white;
+  border: 1px solid lightgray;
+  width: 268px;
+}
+
+.signup-container > img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.signup-container > h2 {
+  width: 280px;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 20px;
+  color: rgb(142, 142, 142);
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.signup-form > input {
+  margin-bottom: 6px;
+  padding: 10px 8px;
+  outline-style: none;
+  border: 1px solid rgba(219, 219, 219, 1);
+  color: rgb(38, 38, 38);
+  border-radius: 3px;
+  background-color: rgb(red, green, blue);
+}
+
+.signup-button {
+  padding: 8px 0;
+  margin: 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  background-color: rgb(0, 138, 240);
+  color: white;
+  border-radius: 6px;
+}
+
+.signup-button[disabled] {
+  opacity: 0.3;
+}
+
+.signup-with-google {
+  display: flex;
+  margin-top: 18px;
+}
+
+.signup-with-google button {
+  flex: 1;
+}
+
+.have-account {
+  background-color: white;
+  border: 1px solid rgba(219, 219, 219, 1);
+  width: 268px;
+  margin-top: 8px;
+  padding: 10px 40px;
+  text-align: center;
+}
+
+.have-account span {
+  font-size: 15px;
+  color: rgb(38, 38, 38);
+}
+
+.policy {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.policy > span {
+  font-size: 12px;
+  color: rgb(142, 142, 142);
+}
+
+.policy > h3 {
+  display: inline;
+  font-size: 12px;
+  color: rgb(142, 142, 142);
 }

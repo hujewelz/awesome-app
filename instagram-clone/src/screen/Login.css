@@ -53,7 +53,9 @@
   display: inline;
   margin: 16px 0;
   padding: 0;
-  color: deeppink;
+  font-weight: 500;
+  font-size: 15px;
+  color: rgb(0, 138, 240);
 }
 
 .link-button:hover,

@@ -1,6 +1,5 @@
 import React from "react";
 import "./Signup.css";
-import "./Login.css";
 
 function Signup() {
   return (
@@ -8,26 +7,33 @@ function Signup() {
       <div className="signup-container">
         <img
           src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
-          className="login-logo"
+          className="signup-logo"
           alt="Instagram"
         />
-        <div className="login-form">
-          <form>
-            <input type="text" placeholder="Email" />
-            <input type="text" placeholder="Password" />
-            <button className="login-button">Sign Up</button>
-          </form>
-          {/*<p>
-          Need a account?&nbsp;
-          <Link to="/signup">
-            <button className="link-button">Sign up now!</button>
-          </Link>
-        </p>*/}
+        <h2>Sign up to see photos and videos from your friends.</h2>
+        <div className="signup-with-google">
+          <button className="signup-button">Sign up with Google</button>
         </div>
         <hr className="divider" />
-        <div className="login-with-google">
-          <button className="login-button">Sign Up with Google</button>
+        <div>
+          <form className="signup-form">
+            <input type="text" placeholder="Email" />
+            <input type="text" placeholder="Full Name" />
+            <input type="text" placeholder="Username" />
+            <input type="text" placeholder="Password" />
+            <button className="signup-button" disabled>
+              Sign up
+            </button>
+          </form>
+          <div className="policy">
+            <span>By signing up, you agree to our</span>
+            <h3>Terms, Data Policy and Cookies Policy.</h3>
+          </div>
         </div>
+      </div>
+      <div className="have-account">
+        <span>Have an account?&nbsp;</span>
+        <button className="link-button">Log in</button>
       </div>
     </div>
   );
