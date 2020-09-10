@@ -56,3 +56,16 @@ hr.divider:after {
   background-color: transparent;
   outline-style: none;
 }
+
+.login-button > span {
+  position: relative;
+  top: -2px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 15px;
+  height: 18px;
+  width: 18px;
+  background-color: rgb(66, 133, 244);
+  color: white;
+  margin-right: 8px;
+}

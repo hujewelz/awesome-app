@@ -22,7 +22,9 @@ function Login() {
         </div>
         <hr className="divider" />
         <div className="login-with-google">
-          <button className="login-button">Sign in with Google</button>
+          <button className="login-button">
+            <span>G</span>Login in with Google
+          </button>
         </div>
       </div>
       <div className="have-account">
