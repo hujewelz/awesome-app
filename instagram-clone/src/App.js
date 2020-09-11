@@ -35,7 +35,7 @@ function App() {
         <Router>
           <Switch>
             <Route path="/">
-              <Home />
+              <Home user={user} />
             </Route>
           </Switch>
         </Router>
@@ -43,7 +43,7 @@ function App() {
     </div>
   );
 }
-const Home = () => {
+const Home = ({ user }) => {
   const history = useHistory();
   const signOut = () => {
     auth
@@ -53,8 +53,8 @@ const Home = () => {
   };
   return (
     <div className="home">
-      <NavigationBar signOut={signOut} />
-      <Post />
+      <NavigationBar user={user} signOut={signOut} />
+      <Post user={user} />
     </div>
   );
 };

@@ -61,6 +61,7 @@
 .username h3 {
   font-size: 13px;
   color: var(--text-black);
+  margin-bottom: 4px;
 }
 
 .username p {

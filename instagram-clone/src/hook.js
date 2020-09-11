@@ -1,13 +1,20 @@
 const { useState, useEffect } = require("react");
-const { auth } = require("./firebase");
+const { auth, db } = require("./firebase");
 
 export const useUserStatus = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      // console.log("user: ", JSON.stringify(user));
-      setUser(user);
+      db.collection("users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            const profile = doc.data();
+            setUser({ ...user, ...profile });
+          }
+        });
     });
   }, []);
 

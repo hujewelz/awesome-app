@@ -27,7 +27,7 @@ function Signup() {
           const data = {
             id: user.uid,
             email: user.email,
-            photoUrl: user.photoURL,
+            photoURL: user.photoURL,
           };
           docRef
             .set({

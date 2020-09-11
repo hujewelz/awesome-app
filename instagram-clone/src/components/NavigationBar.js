@@ -5,7 +5,7 @@ import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutline
 import "./NavigationBar.css";
 import { Avatar, Button } from "@material-ui/core";
 
-function NavigationBar({ signOut }) {
+function NavigationBar({user, signOut }) {
   return (
     <div className="app-nav">
       <header className="app-header">
@@ -25,7 +25,7 @@ function NavigationBar({ signOut }) {
             <ExploreOutlinedIcon className="app-header-icon" />
             <FavoriteBorderOutlinedIcon className="app-header-icon" />
             <Button onClick={signOut}>
-              <Avatar className="app-header-icon avatar" />
+              <Avatar src={user.photoURL} className="app-header-icon avatar" />
             </Button>
           </div>
         </div>

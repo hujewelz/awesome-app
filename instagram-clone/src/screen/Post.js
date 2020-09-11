@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Post.css";
 import PostItem from "../components/Post";
 import { Avatar } from "@material-ui/core";
 import Suggestion from "../components/Suggestion";
 import FollowedUser from "../components/FollowedUser";
 
-function Post() {
+function Post({ user }) {
   return (
     <div className="main">
       <div className="hot">
@@ -22,10 +22,10 @@ function Post() {
       </div>
       <div className="sidebar-right">
         <div className="userinfo">
-          <Avatar />
+          <Avatar src={user.photoURL} />
           <div className="username">
-            <h3>Full Name</h3>
-            <p>username</p>
+            <h3>{user.fullName}</h3>
+            <p>{user.name}</p>
           </div>
         </div>
         <Suggestion />
