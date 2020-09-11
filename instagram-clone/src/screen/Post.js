@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Post.css";
 import PostItem from "../components/Post";
 import { Avatar } from "@material-ui/core";
@@ -7,7 +7,7 @@ import FollowedUser from "../components/FollowedUser";
 
 function Post({ user }) {
   return (
-    <div className="main">
+    <div className="post-main">
       <div className="hot">
         <FollowedUser />
         <FollowedUser />

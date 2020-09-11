@@ -8,11 +8,13 @@
 }
 
 .app {
-  position: relative;
   background-color: #fafafa;
   width: 100vw;
 }
 
-.home {
+.main {
+  position: relative;
+  top: 54px;
   padding-bottom: 54px;
+  background-color: #fafafa;
 }

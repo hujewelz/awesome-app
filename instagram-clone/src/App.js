@@ -14,9 +14,18 @@ import Login from "./screen/Login";
 // import Loading from "./screen/Loading";
 import { useUserStatus } from "./hook";
 import { auth } from "./firebase";
+import Profile from "./screen/Profile";
 
 function App() {
   const user = useUserStatus();
+  const history = useHistory();
+
+  const signOut = () => {
+    auth
+      .signOut()
+      .then(() => history.replace("/login"))
+      .catch((error) => prompt(error));
+  };
 
   return (
     <div className="app">
@@ -33,29 +42,21 @@ function App() {
         </Router>
       ) : (
         <Router>
-          <Switch>
-            <Route path="/">
-              <Home user={user} />
-            </Route>
-          </Switch>
+          <NavigationBar user={user} signOut={signOut} />
+          <div className="main">
+            <Switch>
+              <Route path="/profile">
+                <Profile user={user} />
+              </Route>
+              <Route path="/">
+                <Post user={user} />
+              </Route>
+            </Switch>
+          </div>
         </Router>
       )}
     </div>
   );
 }
-const Home = ({ user }) => {
-  const history = useHistory();
-  const signOut = () => {
-    auth
-      .signOut()
-      .then(() => history.replace("/login"))
-      .catch((error) => prompt(error));
-  };
-  return (
-    <div className="home">
-      <NavigationBar user={user} signOut={signOut} />
-      <Post user={user} />
-    </div>
-  );
-};
+
 export default App;
