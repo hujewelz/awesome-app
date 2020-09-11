@@ -1,8 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
+import { auth } from "../firebase";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginEnable, setLoginEnable] = useState(false);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      console.log("sign user: ", JSON.stringify(user));
+    });
+  }, []);
+
+  const login = (e) => {
+    e.preventDefault();
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => prompt(error));
+  };
+
+  const handleInput = (e) => {
+    const type = e.target.id;
+    const input = e.target.value.trim();
+    setLoginEnable(email && password);
+    if (!input) return;
+    switch (type) {
+      case "email":
+        setEmail(input);
+        break;
+      case "pwd":
+        setPassword(input);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="signup">
       <div className="signup-container">
@@ -13,9 +48,23 @@ function Login() {
         />
         <div>
           <form className="signup-form">
-            <input type="text" placeholder="Email" />
-            <input type="text" placeholder="Password" />
-            <button className="signup-button" disabled>
+            <input
+              id="email"
+              type="text"
+              placeholder="Email"
+              onChange={handleInput}
+            />
+            <input
+              id="pwd"
+              type="text"
+              placeholder="Password"
+              onChange={handleInput}
+            />
+            <button
+              className="signup-button"
+              onClick={login}
+              disabled={!loginEnable}
+            >
               Log In
             </button>
           </form>

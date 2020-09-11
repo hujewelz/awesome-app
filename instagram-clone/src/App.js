@@ -5,29 +5,41 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Post from "./screen/Post";
 import Signup from "./screen/Signup";
 import Login from "./screen/Login";
+import { useUserStatus } from "./hook";
+import Loading from "./screen/Loading";
 
 function App() {
+  const user = useUserStatus();
+
   return (
-    <Router>
-      <div>
-        <Switch>
-          <Route path="/signup">
-            <Signup />
-          </Route>
-          <Route path="/login">
+    <div className="app">
+      {!user ? (
+        <Router>
+          <Loading isLoading>
             <Login />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+          </Loading>
+        </Router>
+      ) : (
+        <Router>
+          <Switch>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      )}
+    </div>
   );
 }
 const Home = () => {
   return (
-    <div className="app">
+    <div className="home">
       <NavigationBar />
       <Post />
     </div>

@@ -9,6 +9,8 @@
 }
 
 .hot {
+  display: flex;
+  align-items: center;
   border: 1px solid rgb(219, 219, 219);
   border-radius: 3px;
   background-color: white;
@@ -17,6 +19,7 @@
   padding: 16px 0;
   height: 84px;
   width: 614px;
+  overflow: hidden;
 }
 
 .post-container {

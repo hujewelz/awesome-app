@@ -1,8 +1,58 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { auth } from "../firebase";
 import "./Signup.css";
 
 function Signup() {
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [signupEnabled, setSignupEnabled] = useState(false);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        //update user profile
+        // user.updateProfile({ displayName: username, fullName: fullName });
+        console.log("user: ", JSON.stringify(user));
+      }
+    });
+  }, [username, fullName]);
+
+  const signup = (e) => {
+    e.preventDefault();
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log("sign up success");
+      })
+      .catch((error) => prompt(error));
+  };
+
+  const handleInput = (e) => {
+    const type = e.target.id;
+    const input = e.target.value.trim();
+    setSignupEnabled(email && fullName && username && password);
+    if (!input) return;
+    switch (type) {
+      case "email":
+        setEmail(input);
+        break;
+      case "fullname":
+        setFullName(input);
+        break;
+      case "username":
+        setUsername(input);
+        break;
+      case "pwd":
+        setPassword(input);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="signup">
       <div className="signup-container">
@@ -21,11 +71,35 @@ function Signup() {
         <hr className="divider" />
         <div>
           <form className="signup-form">
-            <input type="text" placeholder="Email" />
-            <input type="text" placeholder="Full Name" />
-            <input type="text" placeholder="Username" />
-            <input type="text" placeholder="Password" />
-            <button className="signup-button" disabled>
+            <input
+              id="email"
+              type="text"
+              placeholder="Email"
+              onChange={handleInput}
+            />
+            <input
+              id="fullname"
+              type="text"
+              placeholder="Full Name"
+              onChange={handleInput}
+            />
+            <input
+              id="username"
+              type="text"
+              placeholder="Username"
+              onChange={handleInput}
+            />
+            <input
+              id="pwd"
+              type="text"
+              placeholder="Password"
+              onChange={handleInput}
+            />
+            <button
+              className="signup-button"
+              onClick={signup}
+              disabled={!signupEnabled}
+            >
               Sign up
             </button>
           </form>

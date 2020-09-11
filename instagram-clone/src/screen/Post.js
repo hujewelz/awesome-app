@@ -3,12 +3,18 @@ import "./Post.css";
 import PostItem from "../components/Post";
 import { Avatar } from "@material-ui/core";
 import Suggestion from "../components/Suggestion";
+import FollowedUser from "../components/FollowedUser";
 
 function Post() {
   return (
     <div className="main">
-    <div className="hot">
-    </div>
+      <div className="hot">
+        <FollowedUser />
+        <FollowedUser />
+        <FollowedUser />
+        <FollowedUser />
+        <FollowedUser />
+      </div>
       <div className="post-container">
         <PostItem />
         <PostItem />

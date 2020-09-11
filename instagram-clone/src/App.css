@@ -10,6 +10,9 @@
 .app {
   position: relative;
   background-color: #fafafa;
-  padding-bottom: 54px;
   width: 100vw;
+}
+
+.home {
+  padding-bottom: 54px;
 }
