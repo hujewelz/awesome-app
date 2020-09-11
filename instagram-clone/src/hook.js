@@ -6,7 +6,7 @@ export const useUserStatus = () => {
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      console.log("user: ", JSON.stringify(user));
+      // console.log("user: ", JSON.stringify(user));
       setUser(user);
     });
   }, []);

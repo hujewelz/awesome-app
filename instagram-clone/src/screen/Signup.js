@@ -20,21 +20,25 @@ function Signup() {
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      if (user) {
-        history.replace("/");
-        const data = {
-          id: user.uid,
-          email: user.email,
-          photoUrl: user.photoURL,
-        };
-        db.collection("users")
-          .doc(data.id)
-          .set({
-            ...data,
-            name: username,
-            fullName: fullName,
-          });
-      }
+      if (!user) return;
+      const docRef = db.collection("users").doc(user.uid);
+      docRef.get().then((doc) => {
+        if (!doc.exists) {
+          const data = {
+            id: user.uid,
+            email: user.email,
+            photoUrl: user.photoURL,
+          };
+          docRef
+            .set({
+              ...data,
+              name: username,
+              fullName: fullName,
+            })
+            .then(() => history.replace("/"))
+            .catch((error) => prompt(error));
+        }
+      });
     });
   }, [fullName, username, history]);
 
