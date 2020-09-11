@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { auth } from "../firebase";
+import { Link, useHistory } from "react-router-dom";
+import { auth, db } from "../firebase";
 import "./Signup.css";
 
 function Signup() {
@@ -9,48 +9,60 @@ function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [signupEnabled, setSignupEnabled] = useState(false);
-
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        //update user profile
-        // user.updateProfile({ displayName: username, fullName: fullName });
-        console.log("user: ", JSON.stringify(user));
-      }
-    });
-  }, [username, fullName]);
+  const history = useHistory();
 
   const signup = (e) => {
     e.preventDefault();
     auth
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log("sign up success");
-      })
       .catch((error) => prompt(error));
   };
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        history.replace("/");
+        const data = {
+          id: user.uid,
+          email: user.email,
+          photoUrl: user.photoURL,
+        };
+        db.collection("users")
+          .doc(data.id)
+          .set({
+            ...data,
+            name: username,
+            fullName: fullName,
+          });
+      }
+    });
+  }, [fullName, username, history]);
 
   const handleInput = (e) => {
     const type = e.target.id;
     const input = e.target.value.trim();
-    setSignupEnabled(email && fullName && username && password);
-    if (!input) return;
+    let [eml, fname, name, pwd] = [email, fullName, username, password];
     switch (type) {
       case "email":
+        eml = input;
         setEmail(input);
         break;
       case "fullname":
+        fname = input;
         setFullName(input);
         break;
       case "username":
+        name = input;
         setUsername(input);
         break;
       case "pwd":
+        pwd = input;
         setPassword(input);
         break;
       default:
         break;
     }
+    setSignupEnabled(eml && fname && name && pwd);
   };
 
   return (
@@ -91,7 +103,7 @@ function Signup() {
             />
             <input
               id="pwd"
-              type="text"
+              type="password"
               placeholder="Password"
               onChange={handleInput}
             />

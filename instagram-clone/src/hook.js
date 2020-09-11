@@ -5,7 +5,10 @@ export const useUserStatus = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => setUser(user));
+    auth.onAuthStateChanged((user) => {
+      console.log("user: ", JSON.stringify(user));
+      setUser(user);
+    });
   }, []);
 
   return user;

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import "./Login.css";
 import { auth } from "../firebase";
 
@@ -7,35 +7,36 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginEnable, setLoginEnable] = useState(false);
-
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      console.log("sign user: ", JSON.stringify(user));
-    });
-  }, []);
+  const history = useHistory();
 
   const login = (e) => {
     e.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        history.replace("/");
+      })
       .catch((error) => prompt(error));
   };
 
   const handleInput = (e) => {
     const type = e.target.id;
     const input = e.target.value.trim();
-    setLoginEnable(email && password);
-    if (!input) return;
+    let [eml, pwd] = [email, password];
+
     switch (type) {
       case "email":
-        setEmail(input);
+        eml = input;
+        setEmail(input ?? "");
         break;
       case "pwd":
-        setPassword(input);
+        pwd = input;
+        setPassword(input ?? "");
         break;
       default:
         break;
     }
+    setLoginEnable(eml && pwd);
   };
 
   return (
@@ -56,7 +57,7 @@ function Login() {
             />
             <input
               id="pwd"
-              type="text"
+              type="password"
               placeholder="Password"
               onChange={handleInput}
             />
