@@ -12,16 +12,26 @@
 
 .profile-userinfo {
   display: flex;
-
   max-width: 935px;
   padding: 30px 0px;
   margin-bottom: 10px;
+}
+
+.profile-userinfo button {
+  border: none;
+  outline-style: none;
+  background-color: transparent;
+}
+
+.profile-userinfo input {
+  display: none;
 }
 
 .profile-userinfo .MuiAvatar-root {
   width: 150px;
   height: 150px;
   background-color: lightgray;
+  border: 1px solid lightgray;
   margin: 0 70px;
 }
 
@@ -58,6 +68,8 @@
 }
 
 .profile-divider {
+  height: 1px;
   width: 100%;
   background-color: lightgray;
+  border: none;
 }

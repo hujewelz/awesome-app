@@ -1,20 +1,19 @@
 import React from "react";
-import "./App.css";
-import NavigationBar from "./components/NavigationBar";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   useHistory,
 } from "react-router-dom";
+import "./App.css";
+import NavigationBar from "./components/NavigationBar";
 import Post from "./screen/Post";
 import Signup from "./screen/Signup";
 import Login from "./screen/Login";
-// import { useSateValue } from "./StateProvider";
-// import Loading from "./screen/Loading";
 import { useUserStatus } from "./hook";
 import { auth } from "./firebase";
 import Profile from "./screen/Profile";
+import Loading from "./UI/Loading";
 
 function App() {
   const user = useUserStatus();
@@ -36,7 +35,9 @@ function App() {
               <Signup />
             </Route>
             <Route path="/">
-              <Login />
+              <Loading isLoading>
+                <Login />
+              </Loading>
             </Route>
           </Switch>
         </Router>
