@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import HomeIcon from "@material-ui/icons/Home";
 import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import "./NavigationBar.css";
 import { Avatar, Button } from "@material-ui/core";
 
-function NavigationBar({user, signOut }) {
+function NavigationBar({ user, signOut }) {
   return (
     <div className="app-nav">
       <header className="app-header">

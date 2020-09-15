@@ -10,7 +10,7 @@ function Loading({ isLoading, children }) {
       />
     </div>
   ) : (
-    { children }
+    <>{children}</>
   );
 }
 

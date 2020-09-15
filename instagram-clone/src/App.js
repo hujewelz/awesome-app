@@ -16,7 +16,7 @@ import Profile from "./screen/Profile";
 import Loading from "./UI/Loading";
 
 function App() {
-  const user = useUserStatus();
+  const [user, loading] = useUserStatus();
   const history = useHistory();
 
   const signOut = () => {
@@ -35,7 +35,7 @@ function App() {
               <Signup />
             </Route>
             <Route path="/">
-              <Loading isLoading>
+              <Loading isLoading={loading}>
                 <Login />
               </Loading>
             </Route>
