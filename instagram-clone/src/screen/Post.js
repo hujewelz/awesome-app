@@ -16,6 +16,7 @@ function Post({ user }) {
       .then((snapshop) => {
         snapshop.forEach((doc) => {
           data.push({ id: doc.id, ...doc.data() });
+          console.log("post: ", JSON.stringify(doc.data()));
         });
         setPosts(data);
       });
@@ -45,7 +46,6 @@ function Post({ user }) {
         </div>
         <Suggestion />
       </div>
-      
     </div>
   );
 }

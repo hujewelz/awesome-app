@@ -57,7 +57,8 @@
 }
 
 .post-text {
-  padding: 10px 16px;
+  padding: 0 16px;
+  padding-top: 8px;
   font-size: 14px;
 }
 
@@ -70,7 +71,7 @@
   display: flex;
   align-items: center;
   height: 56px;
-  margin-top: 4px;
+  margin-top: 14px;
   padding: 0px 16px;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
 }

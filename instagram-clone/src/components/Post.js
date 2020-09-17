@@ -1,17 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Post.css";
 import MoreHorizOutlinedIcon from "@material-ui/icons/MoreHorizOutlined";
 import { BsHeart } from "react-icons/bs";
 import { AiOutlineMessage } from "react-icons/ai";
 import { FiSend } from "react-icons/fi";
 import { Avatar } from "@material-ui/core";
+import { db, FieldValue } from "../firebase";
+import { useUserStatus } from "../hook";
 
 function PostItem({ post }) {
   const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
+  const [user] = useUserStatus();
+
+  useEffect(() => {
+    setComments(post.comments ?? []);
+  }, [post]);
 
   const postComment = (e) => {
     e.preventDefault();
-    console.log(comment);
+    const newComment = {
+      comment,
+      userName: user.name,
+    };
+    db.collection("posts")
+      .doc(`${post.id}`)
+      .update({
+        comments: FieldValue.arrayUnion(newComment),
+      })
+      .then(() => setComments([...comments, newComment]))
+      .catch((err) => prompt(err));
+
     setComment("");
   };
 
@@ -33,8 +52,13 @@ function PostItem({ post }) {
         </div>
         <div className="post-likes">2,456 likes</div>
         <div className="post-text">
-          <span>{post.user.name}</span>&nbsp;{post.caption}.
+          <span>{post.user.name}</span>&nbsp;{post.caption}
         </div>
+        {comments.map((com) => (
+          <div className="post-text">
+            <span>{com.userName}</span>&nbsp;{com.comment}
+          </div>
+        ))}
         <div className="post-comment">
           <form>
             <input
