@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Post.css";
 import PostItem from "../components/Post";
 import { Avatar } from "@material-ui/core";
 import Suggestion from "../components/Suggestion";
 import FollowedUser from "../components/FollowedUser";
+import { db } from "../firebase";
 
 function Post({ user }) {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    let data = [];
+    db.collection("posts")
+      .get()
+      .then((snapshop) => {
+        snapshop.forEach((doc) => {
+          data.push({ id: doc.id, ...doc.data() });
+        });
+        setPosts(data);
+      });
+  }, []);
+
   return (
     <div className="post-main">
       <div className="hot">
@@ -16,9 +31,9 @@ function Post({ user }) {
         <FollowedUser />
       </div>
       <div className="post-container">
-        <PostItem />
-        <PostItem />
-        <PostItem />
+        {posts.map((post) => (
+          <PostItem key={post.id} post={post} />
+        ))}
       </div>
       <div className="sidebar-right">
         <div className="userinfo">
@@ -30,6 +45,7 @@ function Post({ user }) {
         </div>
         <Suggestion />
       </div>
+      
     </div>
   );
 }

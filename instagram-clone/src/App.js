@@ -14,6 +14,7 @@ import { useUserStatus } from "./hook";
 import { auth } from "./firebase";
 import Profile from "./screen/Profile";
 import Loading from "./UI/Loading";
+import NewPost from "./screen/NewPost";
 
 function App() {
   const [user, loading] = useUserStatus();
@@ -51,6 +52,7 @@ function App() {
               </Route>
               <Route path="/">
                 <Post user={user} />
+                <NewPost />
               </Route>
             </Switch>
           </div>

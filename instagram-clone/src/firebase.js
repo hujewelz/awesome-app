@@ -24,3 +24,5 @@ export const storage = firebase.storage();
 // Sign in with Google
 // auth.signInWithPopup(provider)
 export const provider = new firebase.auth.GoogleAuthProvider();
+
+export const FieldValue = firebase.firestore.FieldValue;

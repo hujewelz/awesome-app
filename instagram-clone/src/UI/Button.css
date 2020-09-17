@@ -1,7 +1,13 @@
 .ui-button {
+  display: flex;
+  align-items: center;
   border: none;
   cursor: pointer;
   outline-style: none;
   background-color: transparent;
   padding: 8px;
+}
+
+.button-title {
+  margin-left: 4px;
 }

@@ -1,0 +1,45 @@
+.profile-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-toolbar a {
+  text-decoration: none;
+}
+
+.toolbar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 44px;
+  color: var(--text-black);
+  opacity: 0.5;
+  margin: 0 8px;
+}
+
+.profile-toolbar .actived {
+  position: relative;
+  opacity: 1;
+}
+
+.profile-toolbar .actived::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  height: 1px;
+  width: 80px;
+  background-color: rgb(34, 33, 33);
+}
+
+.toolbar-item > .MuiSvgIcon-root {
+  width: 20px;
+  height: 20px;
+}
+
+.toolbar-item > span {
+  margin-left: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
