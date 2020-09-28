@@ -29,35 +29,35 @@ function App() {
 
   return (
     <div className="app">
-      {!user ? (
-        <Router>
-          <Switch>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-            <Route path="/">
-              <Loading isLoading={loading}>
-                <Login />
-              </Loading>
-            </Route>
-          </Switch>
-        </Router>
-      ) : (
-        <Router>
-          <NavigationBar user={user} signOut={signOut} />
-          <div className="main">
+      <Loading isLoading={loading}>
+        {!user ? (
+          <Router>
             <Switch>
-              <Route path="/profile">
-                <Profile user={user} />
+              <Route path="/signup">
+                <Signup />
               </Route>
               <Route path="/">
-                <Post user={user} />
-                <NewPost />
+                <Login />
               </Route>
             </Switch>
-          </div>
-        </Router>
-      )}
+          </Router>
+        ) : (
+          <Router>
+            <NavigationBar user={user} signOut={signOut} />
+            <div className="main">
+              <Switch>
+                <Route path="/profile">
+                  <Profile user={user} />
+                </Route>
+                <Route path="/">
+                  <Post user={user} />
+                  <NewPost />
+                </Route>
+              </Switch>
+            </div>
+          </Router>
+        )}
+      </Loading>
     </div>
   );
 }

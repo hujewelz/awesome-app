@@ -7,14 +7,12 @@ export const useUserStatus = () => {
 
   useEffect(() => {
     setLoading(true);
-    console.log("is loading");
     auth.onAuthStateChanged((user) => {
       db.collection("users")
         .doc(user.uid)
         .get()
         .then((doc) => {
           setLoading(false);
-          console.log("end loading");
           if (doc.exists) {
             const profile = doc.data();
             setUser({ ...user, ...profile });
